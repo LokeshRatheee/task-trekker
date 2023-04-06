@@ -116,6 +116,14 @@ export default function Today() {
                 <div className={styles.inputboxs}>
                 <input type="text" placeholder="Task title" className={styles.tasktitle} />
                 <input type="text"  placeholder="Description" className={styles.description}/>
+                <div className={styles.addCancelbtn}>
+                  <button className={styles.btnadd}>
+                    Add
+                  </button>
+                  <button className={styles.btncancel}>
+                    Cancel
+                  </button>
+                </div>
                 </div>
               </li>
 

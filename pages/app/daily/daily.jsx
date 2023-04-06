@@ -27,8 +27,18 @@ export default function Daily() {
           />
         </div>
       </div>
-      <div className={styles.sidebar}>
-        <div className={styles.todaydiv} >
+
+
+
+      {/* after click sidebar */}
+      <div className={styles.xyz}>
+                      {/* before click sidebar */}
+
+      <div className={styles.beforeSideBar}>
+        <i className={`fa-solid fa-bars ${styles.baricon}`}></i>
+      </div>
+      <div className={styles.afterClickSideBar}>
+        <div className={styles.todaydiv}>
           <Image
             src="/daily/ion_calendar-clear.png"
             alt="Picture of the author"
@@ -58,8 +68,12 @@ export default function Daily() {
           />
           <span className={styles.upcoming}>Upcoming</span>
         </div>
+
       </div>
-      
+      </div>
+
+
+
       <div className={styles.anothercomponent}>{<Today />}</div>
     </>
   );
