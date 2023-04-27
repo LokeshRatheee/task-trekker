@@ -1,5 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rosario&family=Rowdies&display=swap");
+
+.textlinkLogin{
+  color: #ff4f5a;
+  text-decoration: none;
+}
+.textlinkSignup{
+  color : black;
+  text-decoration : none;
+}
 @media only screen and (min-width: 1026px) {
+  .textlinkLogin{
+    color: #ff4f5a;
+    text-decoration: none;
+  }
+  .textlinkSignup{
+    color : black;
+    text-decoration : none;
+  }
   .navbar {
     width: 1146px;
     height: 45px;

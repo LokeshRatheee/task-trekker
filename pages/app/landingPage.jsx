@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "@/styles/landingPage/desktop.module.css";
 import Image from "next/image";
+import Link from 'next/link';
 
 export default function LandingPage() {
   return (
@@ -18,8 +19,12 @@ export default function LandingPage() {
             <span className={styles.tododaily}>Todo Daily</span>
           </div>
           <div className={styles.rightnavbar}>
-            <div className={styles.login}>Login</div>
-            <div className={styles.signup}>Signup</div>
+            <div className={styles.login}>
+              <Link href="/app/components/pages/signin/signin" className={styles.textlinkLogin}>Login</Link>
+              </div>
+            <div className={styles.signup}>
+            <Link href="/app/login/signUp" className={styles.textlinkSignup}>Signup</Link>
+            </div>
           </div>
         </div>
         <div className={styles.hero}>

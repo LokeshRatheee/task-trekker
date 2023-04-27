@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rosario&family=Rowdies&display=swap");
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    width: 231px;
+    height: 45px;
+    padding-top: 41px;
+    padding-left: 39px;
+  }
+  .tododaily {
+    width: 180px;
+    height: 45px;
+    font-family: "Rowdies";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    color: #ff4f5a;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  

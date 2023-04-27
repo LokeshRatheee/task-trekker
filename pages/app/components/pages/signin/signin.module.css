@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rosario&family=Rowdies&display=swap");
+
+
+.box {
+  width: 512px;
+  height: 533px;
+  background: white;
+  border: 1px solid #d2d2d2;
+  border-radius: 6px;
+  margin: auto;
+  margin-top: 222px;
+  margin-bottom: 362px;
+}
+.signin {
+  width: 73px;
+  height: 30px;
+  margin-top: 42px;
+  margin-left: 39px;
+  margin-bottom: 38px;
+
+  font-family: "Rowdies";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  /* identical to box height */
+  display: block;
+  color: #000000;
+}
+
+.signButtons {
+  display: grid;
+  gap: 20px;
+}
+.divider {
+  width: 431px;
+  margin: auto;
+  margin-top: 113px;
+}
+.footer {
+  padding-top: 18px;
+  margin: auto;
+  width: 213px;
+  height: 21px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: black;
+}
+.footerSign {
+  color: #ff4f5a;
+}
