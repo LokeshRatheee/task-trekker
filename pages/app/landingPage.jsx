@@ -20,10 +20,10 @@ export default function LandingPage() {
           </div>
           <div className={styles.rightnavbar}>
             <div className={styles.login}>
-              <Link href="/app/components/pages/signin/signin" className={styles.textlinkLogin}>Login</Link>
+              <Link href="/signin" className={styles.textlinkLogin} >Login</Link>
               </div>
             <div className={styles.signup}>
-            <Link href="/app/login/signUp" className={styles.textlinkSignup}>Signup</Link>
+            {/* <Link href="/app/components/pages/signin/signin?prop=signup" className={styles.textlinkSignup} passHref >Signup</Link> */}
             </div>
           </div>
         </div>

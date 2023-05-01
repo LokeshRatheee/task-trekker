@@ -6,14 +6,13 @@
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
-    width: 231px;
-    height: 45px;
     padding-top: 41px;
-    padding-left: 39px;
+    margin : 0px 39px 0px 39px;
+    /* padding-left: 39px; */
   }
   .tododaily {
-    width: 180px;
-    height: 45px;
+    /* width: 180px; */
+    /* height: 45px; */
     font-family: "Rowdies";
     font-style: normal;
     font-weight: 400;
@@ -24,4 +23,15 @@
     order: 1;
     flex-grow: 0;
   }
-  
+  /* mobile view */
+/* @media only screen and (max-width: 480px) {
+
+  .header {
+    display: flex;
+    margin: auto;
+    padding: 0%;
+    margin-top: 20px;
+  }
+
+}
+   */
