@@ -1,29 +1,42 @@
 .buttonGoogle {
-    cursor: pointer;
-  }
-  
+  cursor: pointer;
+}
+
+.buttonGoogle {
+  width: 84%;
+  height: 42px;
+  margin: auto;
+  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+}
+.google {
+  padding-left: 93px;
+  padding-right: 10px;
+}
+.googletext {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+}
+
+/* mobile view */
+@media only screen and (max-width: 480px) {
+ 
   .buttonGoogle {
-    width: 431px;
-    height: 42px;
-    margin: auto;
-    display: block;
+    width: 80%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-    border: 1px solid #d8d8d8;
-    border-radius: 4px;
-   
+    justify-content: space-evenly;
   }
   .google {
-    padding-left: 93px;
-    padding-right: 10px;
+    padding: 0;
   }
-  .googletext {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
-    color: #000000;
-  }
+
+}

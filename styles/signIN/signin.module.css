@@ -4,6 +4,7 @@
   cursor: pointer;
 }
 
+
 .box {
   width: 512px;
   height: 533px;
@@ -28,7 +29,7 @@
 }
 .tododaily {
   width: 180px;
-  height: 45px;
+  /* height: 45px; */
   font-family: "Rowdies";
   font-style: normal;
   font-weight: 400;
@@ -42,7 +43,7 @@
 .signin {
   /* position: absolute; */
   width: 73px;
-  height: 30px;
+  /* height: 30px; */
   margin-top: 42px;
   margin-left: 39px;
   margin-bottom: 38px;
@@ -90,10 +91,10 @@
   margin: auto;
   margin-top: 113px;
 }
-.footer {
+.footers {
   padding-top: 18px;
   margin: auto;
-  width: 213px;
+  /* width: 100%; */
   height: 21px;
   font-family: "Roboto";
   font-style: normal;
@@ -101,6 +102,7 @@
   font-size: 18px;
   line-height: 21px;
   color: black;
+  text-align : center;
 }
 .footerSign {
   color: #ff4f5a;
