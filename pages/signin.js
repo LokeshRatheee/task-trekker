@@ -2,7 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-const SignInComponent = dynamic(() => import("../pages/app/components/pages/signin/signin.jsx"));
+const SignInComponent = dynamic(() => import("/pages/app/components/pages/signin/signin?prop=signup"));
 
 function Sign() {
   return <SignInComponent />;

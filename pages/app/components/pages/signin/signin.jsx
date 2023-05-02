@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-// import styles from "@/styles/signIN/signin.module.css";
 import styles from "../signin/signin.module.css";
 import HeaderWithLogo from "../../organisms/HeaderWithLogo/HeaderWithLogo";
 import SignupButton from "../../organisms/signupButton/signupButton";
+import {useSession} from "next-auth/react";
+
+
+
 
 const Signin = () => {
+  // const router = useRouter();
+  
   const router = useRouter();
-  console.log(router);
-  const [footer, setfooter] = useState(router.query.prop);
-  console.log(router.query.prop);
+  const [footer, setFooter] = useState(null);
+  
+  const {data :session } = useSession();
+  console.log(session);
+
+  useEffect(() => {
+    if (router.isReady && router.query.prop) {
+      // Save the value to localStorage when the prop is available
+      localStorage.setItem("footer", router.query.prop);
+    }
+
+    // Retrieve the value from localStorage or use a default value
+    const storedFooter = localStorage.getItem("footer") || "default-value";
+    setFooter(storedFooter);
+  }, [router.isReady, router.query.prop]);
+
+  // console.log(footer);
 
   return (
     <>
@@ -29,7 +48,10 @@ const Signin = () => {
             height="22"
             width="22"
             text="Continue using Google"
-            href={"/app/daily/daily"}
+            
+            auth = "google"
+            // href = {"/app/daily/daily"}
+            href={session === undefined || session === null ? "/signin" :"/app/daily/daily" }
           />
           <SignupButton
             src="/signIN/mdi_github.png"
@@ -37,23 +59,26 @@ const Signin = () => {
             width="21"
             alt="rr"
             text="Continue using Github"
-            href={"/app/daily/daily"}
+           
+            auth = "github"
+            // href = {"/app/daily/daily"}
+            href={session === undefined || session === null ? "/signin" :"/app/daily/daily" }
           />
         </div>
         <hr className={styles.divider} />
-    
+
         {footer === "signin" && (
           <div className={styles.footer}>
-            Not have an account ? <span className={styles.footerSign}>Signup</span>
+            Not have an account ?{" "}
+            <span className={styles.footerSign}>Signup</span>
           </div>
         )}
-        {
-          footer === "signup" && (
-            <div className = {styles.footer}>
-              Already have an account ? <span className={styles.footerSign}>Signin</span>
-            </div>
-          )
-        }
+        {footer === "signup" && (
+          <div className={styles.footer}>
+            Already have an account ?{" "}
+            <span className={styles.footerSign}>Signin</span>
+          </div>
+        )}
       </div>
     </>
   );

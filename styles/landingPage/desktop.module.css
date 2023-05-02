@@ -9,6 +9,9 @@
   text-decoration : none;
 }
 @media only screen and (min-width: 1026px) {
+  .bgimg{
+    display : none;
+  }
   .textlinkLogin{
     color: #ff4f5a;
     text-decoration: none;
@@ -110,6 +113,7 @@
     color: #ffffff;
   }
   .bgImage {
+    /* display : none; */
     width: 1363px;
     height: 909px;
     background-image: url("/landingPage/hero-section-img.png");
