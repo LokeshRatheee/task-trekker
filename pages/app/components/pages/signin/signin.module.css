@@ -2,6 +2,7 @@
 
 .footerSign {
   cursor: pointer;
+  
 }
 .box {
   width: 512px;
@@ -56,6 +57,7 @@
 }
 .footerSign {
   color: #ff4f5a;
+  text-decoration: none;
 }
 /* mobile view */
 @media only screen and (max-width: 480px) {
@@ -74,5 +76,9 @@
     width: 80%;
     margin: auto;
     margin-top: 113px;
+  }
+  .footerSign {
+    color: #ff4f5a;
+    text-decoration: none;
   }
 }

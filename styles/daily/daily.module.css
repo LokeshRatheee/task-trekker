@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rosario&family=Rowdies&display=swap");
 
 
-
+.Logout{
+  cursor:pointer;
+}
 
 .todaydiv{
   cursor : pointer;
@@ -121,10 +123,12 @@
   background: #f9f9f9;
   height: 1031px;
   float: left;
+ 
   /* display: none; */
 }
 .baricon {
   color: #ff4f5a;
+  cursor: pointer;
 }
 .beforeSideBar {
   width: 306px;

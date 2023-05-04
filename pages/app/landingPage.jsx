@@ -2,8 +2,12 @@ import React from "react";
 import styles from "@/styles/landingPage/desktop.module.css";
 import Image from "next/image";
 import Link from 'next/link';
+import {useSession} from "next-auth/react";
 
 export default function LandingPage() {
+
+  const {data : session }  = useSession();
+  console.log(session && session.user.name);
   return (
     <>
       <div className={styles.container}>
@@ -20,10 +24,10 @@ export default function LandingPage() {
           </div>
           <div className={styles.rightnavbar}>
             <div className={styles.login}>
-              <Link  href="/app/components/pages/signin/signin?prop=signin" className={styles.textlinkLogin} passHref as = "signin">Login</Link>
+              <Link  href="/signin?prop=signin" className={styles.textlinkLogin} passHref as = "signin" >Login</Link>
               </div>
             <div className={styles.signup}>
-            <Link href="/app/components/pages/signin/signin?prop=signup" className={styles.textlinkSignup} passHref  as = "signup">Signup</Link>
+            <Link href="signin?prop=signup" className={styles.textlinkSignup} passHref  as = "signup">Signup</Link>
             </div>
           </div>
         </div>

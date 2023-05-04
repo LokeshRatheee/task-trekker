@@ -1,4 +1,4 @@
-// /pages/sign.js
+// import /pages/sign.js
 
 import React from "react";
 import dynamic from "next/dynamic";
