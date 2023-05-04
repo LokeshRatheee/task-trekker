@@ -6,6 +6,11 @@ import SignupButton from "../../organisms/signupButton/signupButton";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
+import InputBoxWithLogo from "../../molecules/inputBoxWithLogo/inputBoxWithLogo";
+import LoginButton from "../../atoms/loginButton/loginButton";
+
+
+
 
 const Signin = () => {
   // const router = useRouter();
@@ -40,6 +45,10 @@ const Signin = () => {
           height="41"
         />
         <span className={styles.signin}>{router.query.prop}</span>
+        <InputBoxWithLogo label="Email" placeholder="me@example.com" />
+        <InputBoxWithLogo label="Password" placeholder="password" />
+        <LoginButton />
+        <span className={styles.or}>OR</span>
         <div className={styles.signButtons}>
           <SignupButton
             src="/signIN/flat-color-icons_google.png"
