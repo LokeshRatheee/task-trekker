@@ -7,11 +7,11 @@ const app = express();
 app.use(express.json());
 
 app.post('/login', (req, res) => {
-  const { id, password } = req.body;
+  const { email, password } = req.body;
 
   //making connection to the database table and checking data is valid or not
   const conn = mysql.createConnection(config);
-  conn.query(`SELECT * FROM youtube_channel WHERE id = '${id}' AND password = '${password}'`, (err, results) => {
+  conn.query(`SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`, (err, results) => {
     conn.end();
     if (err) {
       console.log(err);
