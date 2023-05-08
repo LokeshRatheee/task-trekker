@@ -16,8 +16,8 @@ const Signin = () => {
   // const router = useRouter();
 
   const router = useRouter();
-  const [footer, setFooter] = useState(null);
-
+  const [footer, setfooter] = useState(null);
+  console.log(router.query.prop)
   const { data: session } = useSession();
   // console.log(session);
 
@@ -26,11 +26,13 @@ const Signin = () => {
       // Save the value to localStorage when the prop is available
       localStorage.setItem("footer", router.query.prop);
     }
-
+    
     // Retrieve the value from localStorage or use a default value
-    const storedFooter = localStorage.getItem("footer") || "default-value";
-    setFooter(storedFooter);
+    const storedfooter = localStorage.getItem("footer") || "default-value";
+    setfooter(storedfooter);
+    console.log(footer)
   }, [router.isReady, router.query.prop]);
+
 
   // console.log(footer);
 
@@ -44,7 +46,7 @@ const Signin = () => {
           width="41"
           height="41"
         />
-        <span className={styles.signin}>{router.query.prop}</span>
+        <span className={styles.signin}>{footer}</span>
         <InputBoxWithLogo label="Email" placeholder="me@example.com" />
         <InputBoxWithLogo label="Password" placeholder="password" />
         <LoginButton />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/styles/landingPage/desktop.module.css";
 import Image from "next/image";
 import Link from 'next/link';
@@ -8,6 +8,19 @@ export default function LandingPage() {
 
   const {data : session }  = useSession();
   console.log(session && session.user.name);
+
+
+
+  useEffect(() => {
+    if(window.screen.width < 960){
+      const logo = document.getElementById("logo");
+      logo.style.display = "none";
+    }
+  },[])
+
+
+
+
   return (
     <>
       <div className={styles.container}>
@@ -19,6 +32,7 @@ export default function LandingPage() {
               width={41}
               height={41}
               className={styles.logo}
+              id = "logo"
             />
             <span className={styles.tododaily}>Todo Daily</span>
           </div>

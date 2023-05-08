@@ -6,3 +6,8 @@
   font-size: x-large;
   font-family: Roboto;
 }
+@media only screen and (max-width: 480px){
+  .label{
+    font-size: large;
+  }
+}

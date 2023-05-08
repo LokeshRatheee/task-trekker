@@ -33,3 +33,11 @@
 
     transition: all 0.3s;
   }
+
+
+  @media only screen and (max-width: 480px){
+    .loginBtn{
+      height: 35px;
+      font-size: large;
+    }
+  }
