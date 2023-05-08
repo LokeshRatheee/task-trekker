@@ -20,6 +20,7 @@ export default function Daily() {
   const [showsidebar, setshowsidebar] = useState(false);
 
   useEffect(() => {
+    console.log(session);
     if (!session) {
       router.push("/");
     }
