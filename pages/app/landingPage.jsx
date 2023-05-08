@@ -132,6 +132,7 @@ export default function LandingPage() {
                 alt="Picture of the author"
                 width={56}
                 height={56}
+                className={styles.footerLogo}
               />
               <p className={styles.habit}>
                 Lets change your habit join with million people
