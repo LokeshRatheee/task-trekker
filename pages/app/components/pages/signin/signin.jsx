@@ -1,40 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../signin/signin.module.css";
 import HeaderWithLogo from "../../organisms/HeaderWithLogo/HeaderWithLogo";
 import SignupButton from "../../organisms/signupButton/signupButton";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { getSession } from "next-auth/react";
+// import { getSession } from "next-auth/react";
 import InputBoxWithLogo from "../../molecules/inputBoxWithLogo/inputBoxWithLogo";
 import LoginButton from "../../atoms/loginButton/loginButton";
-
-
-
+import axios from "axios";
+import MyContext from "@/Context/MyContext";
+import { redirect } from "next/navigation";
 
 const Signin = () => {
   // const router = useRouter();
-
+  const [apiMessage, setApiMessage] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
   const [footer, setfooter] = useState(null);
-  console.log(router.query.prop)
+  console.log(router.query.prop);
   const { data: session } = useSession();
   // console.log(session);
+  const { email, setemail } = useContext(MyContext);
+  const { password, setpassword } = useContext(MyContext);
+  // const {final , setfinial} = useState(data);
+  const [loginStatus, setloginStatus] = useState(false);
 
   useEffect(() => {
     if (router.isReady && router.query.prop) {
       // Save the value to localStorage when the prop is available
       localStorage.setItem("footer", router.query.prop);
     }
-    
+
     // Retrieve the value from localStorage or use a default value
     const storedfooter = localStorage.getItem("footer") || "default-value";
     setfooter(storedfooter);
-    console.log(footer)
-  }, [router.isReady, router.query.prop]);
+    console.log(footer);
+  }, [router.isReady, router.query.prop, apiMessage]);
 
 
-  // console.log(footer);
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+
+    if (result.error) {
+      // Handle the error
+      alert("something went wrong");
+      console.error(result.error);
+    } else {
+      // Redirect to the protected page
+      alert("Login Succesfull");
+    }
+  };
 
   return (
     <>
@@ -49,7 +71,7 @@ const Signin = () => {
         <span className={styles.signin}>{footer}</span>
         <InputBoxWithLogo label="Email" placeholder="me@example.com" />
         <InputBoxWithLogo label="Password" placeholder="password" />
-        <LoginButton />
+        <LoginButton onClick={handlesubmit} />
         <span className={styles.or}>OR</span>
         <div className={styles.signButtons}>
           <SignupButton
