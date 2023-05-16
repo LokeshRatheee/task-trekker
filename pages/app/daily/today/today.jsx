@@ -1,92 +1,62 @@
-import { React, useState, useEffect, useRef } from "react";
+import {React , useState ,useEffect ,useRef} from "react";
 import styles from "@/styles/daily/today/today.module.css";
 import Image from "next/image";
 export default function Today() {
-  const [showDeleteBtn, setShowDeleteBtn] = useState(false);
-  const [showSideBar, setshowSideBar] = useState(false);
 
-  const deleteBtnRef1 = useRef(null);
-  const deleteBtnRef2 = useRef(null);
 
-  function addTask() {
+  const [showDeleteBtn , setShowDeleteBtn] = useState(false);
+  const [showSideBar , setshowSideBar] = useState(false);
+
+  const deleteBtnRef = useRef(null);
+
+
+
+
+  function addTask(){
     const inputboxs = document.getElementById("inputBoxs");
     const addTaskLi = document.getElementById("addTaskLi");
     inputboxs.style.display = "block";
     addTaskLi.style.display = "none";
+
   }
 
-  function deletebtnShow(event) {
-    const id = event.currentTarget.id;
+  function deletebtnShow(event){
+    const id  = event.currentTarget.id;
     const deletebtn = document.getElementById(id).nextSibling;
-    if (showDeleteBtn === false) {
-      console.log("set to flex");
-      deletebtn.style.display = "flex";
-      // debugger;
+    if(showDeleteBtn === false){
+      // console.log("none");
+      deletebtn.style.display = "flex"
       setShowDeleteBtn(!showDeleteBtn);
-    } else {
-      console.log("set to none");
+    }
+    else{
+      console.log("flex");
       deletebtn.style.display = "none";
       setShowDeleteBtn(!showDeleteBtn);
-      console.log(showDeleteBtn);
     }
   }
 
-  function deleteTaskList(event) {
+  function deleteTaskList(event){
     const id = event.currentTarget.id;
-    const element =
-      document.getElementById(id).parentNode.parentNode.parentNode;
-    element.style.display = "none";
+    const element = document.getElementById(id).parentNode.parentNode.parentNode;
+    element.style.display = "none"; 
   }
 
   useEffect(() => {
-    console.log("showDeleteBtn updated:", showDeleteBtn);
-    const popID1 = document.getElementById("deletebtnId1");
-    function outsideClick1(e) {
-      if (deleteBtnRef1.current && e.target.id === "1") {
-        console.log("parent");
-      } else if (
-        deleteBtnRef1.current &&
-        !deleteBtnRef1.current.contains(e.target)
-      ) {
-        console.log("click out side");
-        if (popID1.style.display != "none") {
-          setShowDeleteBtn(!showDeleteBtn);
-          console.log("showDeleteBtn updated:", showDeleteBtn);
-          console.log("set to none");
-          popID1.style.display = "none";
-        }
-      }
+    function outsideClick(e){
+      // console.log(e.target.nextSibling.id);
+      console.log(deleteBtnRef);
+      
     }
-
-    const popID2 = document.getElementById("deletebtnId2");
-    function outsideClick2(e) {
-      if (deleteBtnRef2.current && e.target.id === "1") {
-        console.log("parent");
-      } else if (
-        deleteBtnRef2.current &&
-        !deleteBtnRef2.current.contains(e.target)
-      ) {
-        console.log("click out side");
-        if (popID2.style.display != "none") {
-          setShowDeleteBtn(!showDeleteBtn);
-          console.log("showDeleteBtn updated:", showDeleteBtn);
-          console.log("set to none");
-          popID2.style.display = "none";
-        }
-      }
-    }
-
-    document.addEventListener("click", outsideClick1);
-    document.addEventListener("click", outsideClick2);
-
+    document.addEventListener("click" , outsideClick);
 
     return () => {
-      document.removeEventListener("click", outsideClick1);
-      document.removeEventListener("click", outsideClick2);
+      document.removeEventListener("click", outsideClick)
+    }
+  },[]);
 
-      console.log("this is unmount statement");
-    };
-  }, [showDeleteBtn]);
+
+
+
 
   return (
     <>
@@ -128,15 +98,10 @@ export default function Today() {
                       width={26}
                       height={25}
                       className={styles.pencilsquare}
-                      id="1"
-                      onClick={deletebtnShow}
-                      ref={deleteBtnRef1}
+                      id = "1"
+                      onClick = {deletebtnShow}
                     />
-                    <button
-                      className={styles.deletebtn}
-                      onClick={deleteTaskList}
-                      id="deletebtnId1"
-                    >
+                    <button className={styles.deletebtn} onClick = {deleteTaskList} id = "deletebtnId1" ref ={deleteBtnRef}>
                       <Image
                         src="/daily/bi_trash-fill.png"
                         alt="Picture of the author"
@@ -144,7 +109,7 @@ export default function Today() {
                         height={25}
                         className={styles.deleteicon}
                       />
-                      <span className={styles.btndeletetext}>Delete</span>
+                      <span className={styles.btndeletetext} >Delete</span>
                     </button>
                   </div>
                 </div>
@@ -181,15 +146,10 @@ export default function Today() {
                       width={26}
                       height={25}
                       className={styles.pencilsquare}
-                      id="2"
-                      onClick={deletebtnShow}
-                      ref={deleteBtnRef2}
+                      id = "2"
+                      onClick = {deletebtnShow}
                     />
-                    <button
-                      className={styles.deletebtn}
-                      onClick={deleteTaskList}
-                      id="deletebtnId2"
-                    >
+                    <button className={styles.deletebtn} onClick = {deleteTaskList} id = "deletebtnId2" ref = {deleteBtnRef}>
                       <Image
                         src="/daily/bi_trash-fill.png"
                         alt="Picture of the author"
@@ -197,17 +157,13 @@ export default function Today() {
                         height={25}
                         className={styles.deleteicon}
                       />
-                      <span className={styles.btndeletetext}>Delete</span>
+                      <span className={styles.btndeletetext} >Delete</span>
                     </button>
                   </div>
                 </div>
               </li>
-              <li
-                className={styles.addtaskli}
-                onClick={() => addTask()}
-                id="addTaskLi"
-              >
-                <Image
+              <li className={styles.addtaskli} onClick = {() => addTask()} id = "addTaskLi" >
+              <Image
                   src="/daily/fluent_add-circle-32-filled.png"
                   alt="Picture of the author"
                   width={26}
@@ -216,24 +172,21 @@ export default function Today() {
                 />
                 <span className={styles.addtask}>Add task</span>
               </li>
-              <li>
-                <div className={styles.inputboxs} id="inputBoxs">
-                  <input
-                    type="text"
-                    placeholder="Task title"
-                    className={styles.tasktitle}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    className={styles.description}
-                  />
-                  <div className={styles.addCancelbtn}>
-                    <button className={styles.btnadd}>Add</button>
-                    <button className={styles.btncancel}>Cancel</button>
-                  </div>
+              <li >
+                <div className={styles.inputboxs} id = "inputBoxs">
+                <input type="text" placeholder="Task title" className={styles.tasktitle} />
+                <input type="text"  placeholder="Description" className={styles.description}/>
+                <div className={styles.addCancelbtn}>
+                  <button className={styles.btnadd}>
+                    Add
+                  </button>
+                  <button className={styles.btncancel}>
+                    Cancel
+                  </button>
+                </div>
                 </div>
               </li>
+
             </ul>
           </div>
         </div>
