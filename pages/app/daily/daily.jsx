@@ -1,18 +1,35 @@
-import { React, useState, useRef, useEffect ,useCallback } from "react";
+import { React, useState, useRef, useEffect, useCallback } from "react";
 import styles from "@/styles/daily/daily.module.css";
 import Image from "next/image";
 import Today from "./today/today";
 import Upcoming from "./upcoming/upcoming";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Daily() {
   // debugger;
-  
-  const check = useRef(null);
 
+  const router = useRouter();
+  const check = useRef(null);
+  const menu = useRef(null);
+  const { data: session } = useSession();
   const [showToday, setshowToday] = useState(true);
   const [showUpcoming, setshowUpcoming] = useState(false);
   const [showpop, setshowpop] = useState(false);
+  const [showsidebar, setshowsidebar] = useState(false);
+
+  useEffect(() => {
+    console.log(session);
+    if (!session) {
+      router.push("/");
+    }
+  }, [session, router]);
+
+  async function handleSignOut() {
+    console.log("signout");
+    await signOut();
+  }
 
   function handleClick(value) {
     if (window.screen.width < 1025) {
@@ -36,58 +53,61 @@ export default function Daily() {
 
   function sideBar() {
     const afterClickSideBarId = document.getElementById("afterClickSideBarId");
-    if (afterClickSideBarId.style.display === "block") {
+    if (showsidebar === true) {
       afterClickSideBarId.style.display = "none";
+      setshowsidebar(!showsidebar);
     } else {
       afterClickSideBarId.style.display = "block";
+      setshowsidebar(!showsidebar);
     }
   }
 
-  // const usericon = useCallback(() => {
-    // const pop = document.getElementById("popId");
-    // if (pop.style.display === "none") {
-    //   pop.style.display = "block";
-    // } else {
-    //   pop.style.display = "none";
-    // }
-  //   setshowpop(false)
-  // },[])
-  function usericon(){
+  function usericon() {
     const pop = document.getElementById("popId");
-    if (pop.style.display === "none") {
+    console.log(showpop);
+    if (showpop === false) {
       pop.style.display = "block";
+      setshowpop(!showpop);
     } else {
       pop.style.display = "none";
+      setshowpop(!showpop);
     }
   }
 
-  
   useEffect(() => {
-    
     const popID = document.getElementById("popId");
-    
-    
     function outsideClick(e) {
-      if(check.current && e.target.id === "usericonId"){
+      if (check.current && e.target.id === "usericonId") {
         console.log("parent");
-      }
-      else if (check.current && !check.current.contains(e.target)) {
-        if (popID.style.display != "none") {
+      } else if (check.current && !check.current.contains(e.target)) {
+        console.log(showpop);
+        if (showpop === true) {
           popID.style.display = "none";
+          setshowpop(!showpop);
         }
       }
     }
-    
-    
+    const afterClickSideBarId = document.getElementById("afterClickSideBarId");
+    function outsideClick1(e) {
+      if (menu.current && !menu.current.contains(e.target)) {
+        if (showsidebar === true) {
+          afterClickSideBarId.style.display = "none";
+          console.log(`after outside click : ${showsidebar}}`);
+          setshowsidebar(!showsidebar);
+          console.log(`after outside click : ${showsidebar}}`);
+        }
+      }
+    }
+
     document.addEventListener("click", outsideClick);
+    document.addEventListener("click", outsideClick1);
 
     return () => {
       document.removeEventListener("click", outsideClick);
+      document.removeEventListener("click", outsideClick1);
       console.log("this is unmount statement");
     };
-}, []);
-
-  
+  }, [showpop, showsidebar]);
 
   return (
     <>
@@ -100,7 +120,6 @@ export default function Daily() {
               width={41}
               height={41}
               className={styles.logo}
-              
             />
             <span className={styles.tododaily}>Todo Daily</span>
           </div>
@@ -123,8 +142,12 @@ export default function Daily() {
       <div className={styles.xyz}>
         {/* before click sidebar */}
 
-        <div className={styles.beforeSideBar} onClick={sideBar}>
-          <i className={`fa-solid fa-bars ${styles.baricon}`}></i>
+        <div className={styles.beforeSideBar}>
+          <i
+            className={`fa-solid fa-bars ${styles.baricon}`}
+            onClick={sideBar}
+            ref={menu}
+          ></i>
         </div>
         <div className={styles.afterClickSideBar} id="afterClickSideBarId">
           <div className={styles.todaydiv} onClick={() => handleClick("today")}>
@@ -187,7 +210,8 @@ export default function Daily() {
           />
           <span>Setting</span>
         </div>
-        <div className={styles.Logout}>
+
+        <div className={styles.Logout} onClick={handleSignOut}>
           <Image
             src="/daily/entypo_log-out.png"
             alt="Picture of the author"

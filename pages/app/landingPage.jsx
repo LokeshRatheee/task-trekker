@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/styles/landingPage/desktop.module.css";
 import Image from "next/image";
 import Link from 'next/link';
+import {useSession} from "next-auth/react";
 
 export default function LandingPage() {
+
+  const {data : session }  = useSession();
+  console.log(session && session.user.name);
+
+
+
+  useEffect(() => {
+    if(window.screen.width < 960){
+      const logo = document.getElementById("logo");
+      logo.style.display = "none";
+    }
+  },[])
+
+
+
+
   return (
     <>
       <div className={styles.container}>
@@ -15,15 +32,16 @@ export default function LandingPage() {
               width={41}
               height={41}
               className={styles.logo}
+              id = "logo"
             />
             <span className={styles.tododaily}>Todo Daily</span>
           </div>
           <div className={styles.rightnavbar}>
             <div className={styles.login}>
-              <Link href="/signin" className={styles.textlinkLogin} >Login</Link>
+              <Link  href="/signin?prop=signin" className={styles.textlinkLogin} passHref as = "signin" >Login</Link>
               </div>
             <div className={styles.signup}>
-            {/* <Link href="/app/components/pages/signin/signin?prop=signup" className={styles.textlinkSignup} passHref >Signup</Link> */}
+            <Link href="signin?prop=signup" className={styles.textlinkSignup} passHref  as = "signup">Signup</Link>
             </div>
           </div>
         </div>
@@ -114,6 +132,7 @@ export default function LandingPage() {
                 alt="Picture of the author"
                 width={56}
                 height={56}
+                className={styles.footerLogo}
               />
               <p className={styles.habit}>
                 Lets change your habit join with million people

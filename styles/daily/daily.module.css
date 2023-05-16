@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rosario&family=Rowdies&display=swap");
 
 
-
+.Logout{
+  cursor:pointer;
+}
 
 .todaydiv{
   cursor : pointer;
@@ -119,12 +121,14 @@
 .afterClickSideBar {
   width: 306px;
   background: #f9f9f9;
-  height: 1031px;
+  height: 100vh;
   float: left;
+ 
   /* display: none; */
 }
 .baricon {
   color: #ff4f5a;
+  cursor: pointer;
 }
 .beforeSideBar {
   width: 306px;
@@ -217,7 +221,7 @@
 }
 
 /* for mobile view */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 767px) {
   .pop {
     width: 29vw;
     padding: 0;
@@ -264,7 +268,7 @@
     font-size: 15px;
   }
   .usericon {
-    padding-right: 10px;
+    padding-right: 65px;
   }
   .logo {
     margin-left: 10px;
@@ -288,7 +292,7 @@
   }
   .afterClickSideBar {
     display: block;
-    width: 50%;
+    width: 40%;
     display: none;
     position: absolute;
     /* top: 10px; */
@@ -313,7 +317,7 @@
     height: 18px;
   }
   .todaydiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -337,7 +341,7 @@
     height: 18px;
   }
   .yesterdaydiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -362,7 +366,7 @@
     height: 18px;
   }
   .upcomingdiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -375,7 +379,7 @@
     margin: 0;
   }
 }
-@media screen and (min-width: 490px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .pop {
     width: 20%;
     padding: 0;
@@ -443,7 +447,7 @@
   }
   .afterClickSideBar {
     display: block;
-    width: 30%;
+    width: 23%;
     display: none;
     position: absolute;
     /* top: 10px; */
@@ -468,7 +472,7 @@
     height: 18px;
   }
   .todaydiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -492,7 +496,7 @@
     height: 18px;
   }
   .yesterdaydiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -517,7 +521,7 @@
     height: 18px;
   }
   .upcomingdiv {
-    width: 100%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -530,116 +534,4 @@
     margin: 0;
   }
 }
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .tododaily {
-    font-size: 15px;
-  }
-  .usericon {
-    padding-right: 10px;
-  }
-  .logo {
-    margin-left: 10px;
-  }
-  .xyz {
-    /* display : block; */
-    /* position: relative; */
-  }
-  .beforeSideBar {
-    width: 100%;
-    height: 5vh;
-    background-color: black;
-    display: flex;
 
-    align-items: center;
-    padding-left: 90%;
-    /* position: relative; */
-    display: none;
-  }
-
-  .baricon {
-    font-size: 20px;
-  }
-  .afterClickSideBar {
-    display: block;
-    width: 20%;
-  }
-  .today {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-    color: #ff4f5a;
-  }
-  .calendericon1 {
-    color: #ff4f5a;
-    padding: 0;
-    margin: 0;
-    width: 18px;
-    height: 18px;
-  }
-  .todaydiv {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-top: 52px;
-  }
-  .yesterday {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-  }
-  .calendericon2 {
-    /* color: #ff4f5a; */
-    padding: 0;
-    margin: 0;
-    width: 18px;
-    height: 18px;
-  }
-  .yesterdaydiv {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: #6b6b6b;
-    padding-top: 52px;
-  }
-  .upcoming {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-  }
-  .calendericon3 {
-    /* color: #ff4f5a; */
-    padding: 0;
-    margin: 0;
-    width: 18px;
-    height: 18px;
-  }
-  .upcomingdiv {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: #6b6b6b;
-    padding-top: 52px;
-  }
-  .anothercomponent {
-    width: 100%;
-    margin: 0;
-  }
-}

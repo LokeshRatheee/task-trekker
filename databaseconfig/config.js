@@ -20,12 +20,12 @@ config.connect(function(err) {
 });
 */
 
-const config ={
-  host:'localhost',
-  user:'prisma',
-  password:'CHIrag9460@',
-  database:'youtube',
-  port:'3307'
+const config = {
+  host: "localhost",
+  user: "prisma",
+  password: "CHIrag9460@",
+  database: "youtube",
+  port: "3307",
 };
 
 module.exports = config;
